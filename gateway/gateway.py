@@ -11,8 +11,10 @@ class GatewayService:
 
     @http('GET', '/repos')
     def get_repos(self, request):
-        q = request.args.get('q')
-        result = self.uniform_rpc.search(q)
+        headers = dict(request.headers)
+        args = dict(request.args)
+
+        result = self.uniform_rpc.search(headers, args)
         return json.dumps(
             {'repos': result}
         )
