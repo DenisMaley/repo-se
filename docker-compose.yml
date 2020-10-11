@@ -15,7 +15,7 @@ services:
 
   github:
     build:
-      context: github
+      context: services/github
     depends_on:
       - rabbit
     environment:
@@ -28,7 +28,7 @@ services:
 
   gitlab:
     build:
-      context: gitlab
+      context: services/gitlab
     depends_on:
       - rabbit
     environment:
