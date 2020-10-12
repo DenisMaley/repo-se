@@ -119,6 +119,10 @@ You can access all the services.
 
 Use exit() or Ctrl-D (i.e. EOF) to exit.
 
+### Docs
+
+To view API specs open swagger.yaml in [Swagger Editor][swagger-editor]
+
 ### To Do
 
 * Add Flask or Fast API with a proper validation ans schemas
@@ -137,4 +141,4 @@ Use exit() or Ctrl-D (i.e. EOF) to exit.
 [eventlet]: http://eventlet.net/
 [docker]: https://docs.docker.com/get-docker/
 [docker-compose]: https://docs.docker.com/compose/install/
-
+[swagger-editor]: https://editor.swagger.io/
