@@ -2,6 +2,7 @@ import json
 import adapters
 from nameko.rpc import rpc, RpcProxy
 from nameko_redis import Redis
+from nameko.testing.services import worker_factory
 
 
 class UniformService:
@@ -52,3 +53,22 @@ class GitlabRepoAdapter(adapters.Adapter):
 
     name = adapters.CharField(source='name_with_namespace')
     url = adapters.CharField(source='web_url')
+
+
+# =============================================================================
+# Begin test
+# =============================================================================
+
+
+def test_uniform_service():
+    # create worker with mock dependencies
+    service = worker_factory(UniformService)
+
+    # add side effects to the mock proxy
+    # to the "github_service" and "gitlab_service" services
+    service.github_rpc.search.side_effect = [{'full_name': 'ama', 'html_url': 'zon'}]
+    service.gitlab_rpc.search.side_effect = [{'name_with_namespace': 'goo', 'html_url': 'gle'}]
+
+    # test adapters
+    assert service.search(dict(), 'foo') == [{'name': 'ama', 'url': 'zon'}]
+    service.github_rpc.search.assert_called_once_with('foo')
