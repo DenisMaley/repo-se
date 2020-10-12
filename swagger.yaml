@@ -1,0 +1,56 @@
+swagger: "2.0"
+info:
+  description: "This is a repo search engine API."
+  version: "1.0.0"
+  title: "Repo Search Engine"
+  contact:
+    email: "denis.i.maley@gmail.com"
+host: "localhost:8000"
+basePath: "/"
+tags:
+- name: "repos"
+  description: "Aggregated repos"
+schemes:
+- "http"
+paths:
+  /repos:
+    get:
+      tags:
+      - "repos"
+      summary: "Find repos by a query"
+      description: "Returns all found repos"
+      operationId: "getRepos"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "q"
+        in: "query"
+        description: "Query to search"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties: 
+              repos:
+                type: array
+                items:
+                  $ref: "#/definitions/Repo"
+        "400":
+          description: "Bad request"
+definitions:
+  Repo:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      url:
+        type: "string"
+        format: "uri"
+    xml:
+      name: "Repo"
+externalDocs:
+  description: "Find out more about Repo SE"
+  url: "https://github.com/DenisMaley/repo-se"
