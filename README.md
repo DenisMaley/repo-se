@@ -121,12 +121,13 @@ Use exit() or Ctrl-D (i.e. EOF) to exit.
 
 ### To Do
 
-1. Add Flask or Fast API with a proper validation ans schemas
-2. Add Swagger documentation
-3. Add Unit and functional tests
-4. Transform services to packages
-5. Catch negative use case scenarios
-6. Add k8s to manage the nodes running the service
+* Add Flask or Fast API with a proper validation ans schemas
+* Add Flasgger
+* Add Swagger documentation
+* Add Unit and functional tests
+* Transform services to packages
+* Catch negative use case scenarios
+* Add k8s to manage the nodes running the service
 
 [microservices_article]: https://martinfowler.com/articles/microservices.html
 [nameko]: https://nameko.readthedocs.io/en/stable/
