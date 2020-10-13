@@ -1,3 +1,4 @@
+import uuid
 import json
 import adapters
 from nameko.rpc import rpc, RpcProxy
@@ -30,7 +31,28 @@ class UniformService:
                 GitlabRepoAdapter().adapt(item).__dict__ for item in gitlab_repos
             ]
 
+        self.log(headers, args, result)
+
         return result
+
+    def log(self, headers, args, result):
+
+        log = {
+            'headers': headers,
+            'args': args,
+            'result': result
+        }
+
+        self.redis.set(
+            str(uuid.uuid4()), json.dumps(log)
+        )
+
+    @rpc
+    def get_logs(self):
+        keys = self.redis.keys('*')
+        logs = {key: self.redis.get(key) for key in keys}
+
+        return logs
 
 
 class Repo(object):
