@@ -119,6 +119,23 @@ You can access all the services.
 
 Use exit() or Ctrl-D (i.e. EOF) to exit.
 
+### Logs
+
+To see the logs of queries and results:
+
+```shell script
+$ docker-compose exec uniform bash
+```
+
+```shell script
+$ nameko shell --config config.yml
+
+```
+
+```shell script
+n.rpc.uniform_service.get_logs()
+```
+
 ### Docs
 
 To view API specs open swagger.yaml in [Swagger Editor][swagger-editor]
