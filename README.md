@@ -144,6 +144,7 @@ To view API specs open swagger.yaml in [Swagger Editor][swagger-editor]
 
 * Add Flask or Fast API with a proper validation ans schemas
 * Add Flasgger
+* Add CI/CD
 * Add Swagger documentation
 * Add Unit and functional tests
 * Transform services to packages
